@@ -90,13 +90,9 @@ to view code
 to view log
 <img width="1917" height="963" alt="image" src="https://github.com/user-attachments/assets/ecc71e50-038c-4439-b503-639ac502fdfe" />
 
-## ADD new DAG
-**DAG** (Directed Acyclic Graph) – a Python script that defines a workflow as a collection of tasks with dependencies and schedule in Apache Airflow.
-Airflow automatically take the DAGS from DAG folder. add new python file in DAG folder:
 
-Click on Create table task then click on 
-
-
+## About Airflow-provider-iris package
+<img width="1563" height="965" alt="image" src="https://github.com/user-attachments/assets/c28036a4-30b6-4031-ac47-e4f030071a48" />
 
 ### Add IRIS connection 
 Go to Admin → Connections → Add Connection
@@ -128,6 +124,16 @@ with DAG(
             )""",
     )
 ```
+
+
+## ADD new DAG
+**DAG** (Directed Acyclic Graph) – a Python script that defines a workflow as a collection of tasks with dependencies and schedule in Apache Airflow.
+Airflow automatically take the DAGS from DAG folder. add new python file in DAG folder:
+
+Click on Create table task then click on 
+
+
+
 ### Example DAGs (Included in examples/)
 1. Raw SQL Operator – Simple & Powerful
 ```python
