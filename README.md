@@ -2,8 +2,8 @@
 <img width="630" height="266" alt="image" src="https://github.com/user-attachments/assets/99d107ab-69d0-4e89-a51a-cf78867d618e" />
 
 [![one](https://img.shields.io/badge/Platform-InterSystems%20IRIS-blue)](https://www.intersystems.com/data-platform/)
-[![one](https://img.shields.io/badge/Workflow%20Orchestration-Aoache%20Airflow-maroon)](https://airflow.apache.org/)
-[![one](https://img.shields.io/badge/PyPI%20Package-airflow%20provider%20iris-orange)](https://pypi.org/project/airflow-provider-iris/)
+[![one](https://img.shields.io/badge/Workflow%20Orchestration-Aoache%20Airflow-success)](https://airflow.apache.org/)
+[![one](https://img.shields.io/badge/PyPI%20Package-airflow%20provider%20iris-yellowgreen)](https://pypi.org/project/airflow-provider-iris/)
 [![one](https://img.shields.io/badge/PyPI%20Availabe%20on-Open%20Exchange-blue)](https:///)
 [![License](https://img.shields.io/badge/License-Apache%202.0-00b2a9.svg)](https://opensource.org/licenses/Apache-2.0)
 
