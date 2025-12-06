@@ -6,4 +6,3 @@ build/
 dist/
 .python-version
 .venv
-logs/
