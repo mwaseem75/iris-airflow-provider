@@ -6,33 +6,14 @@
 [![one](https://img.shields.io/badge/PyPI%20Package-airflow%20provider%20iris-yellowgreen)](https://pypi.org/project/airflow-provider-iris/)
 [![one](https://img.shields.io/badge/PyPI%20Availabe%20on-Open%20Exchange-blue)](https:///)
 [![License](https://img.shields.io/badge/License-Apache%202.0-00b2a9.svg)](https://opensource.org/licenses/Apache-2.0)
+The InterSystems IRIS Provider for Apache Airflow enables seamless integration between Airflow workflows and the InterSystems IRIS data platform. It provides native connection support and operators for executing IRIS SQL and automating IRIS-driven tasks within modern ETL/ELT pipelines.
+
+Designed for reliability and ease of use, this provider helps data engineers and developers build scalable, production-ready workflows for healthcare, interoperability, analytics, and enterprise data processing—powered by InterSystems IRIS.
+
 ## About Apache Airflow
 
-**Apache Airflow** is the industry-standard open-source platform to **programmatically author, schedule, and monitor** data pipelines and workflows using Python.
 
-Originally created at Airbnb in 2014, Airflow is now a graduated Apache project used by thousands of companies (Netflix, Reddit, Airbnb, Lyft, Robinhood, Astronomer, etc.) to orchestrate complex ETL/ELT, machine learning training, batch processing, and business workflows.
-
-### Key Features
-
-| Feature                        | Description                                                                 |
-|-------------------------------|-----------------------------------------------------------------------------|
-| **Code as Truth**             | Workflows are defined as Python code (DAGs) → versioned, tested, and reviewed |
-| **Dynamic Pipeline Generation**| Generate pipelines dynamically based on config, dates, or external data     |
-| **Rich Task Ecosystem**       | 100+ built-in operators + thousands of community providers (AWS, GCP, Azure, Snowflake, dbt, Kubernetes, etc.) |
-| **Powerful UI**               | Visualize DAGs, task status, logs, run history, and retries in real time    |
-| **Scheduling & Dependencies** | Cron-like scheduling, task dependencies, and complex task dependencies             |
-| **Extensible**                | Custom operators, plugins, executors, and hooks                             |
-| **Scalable**                  | Runs on Celery, Kubernetes, or local executor – from laptop to 10k+ tasks   |
-| **Observability**             | Task retries, SLA alerts, rich logging, metrics (Prometheus), and tracing   |
-| **TaskFlow API** (v2.0+)      | Clean, Pythonic way to build DAGs using `@task` decorators                  |
-| **Datasets & Data-Aware Scheduling** | Trigger DAGs when upstream datasets are updated                        |
-| **Deferrable Operators**      | Save resources by suspending tasks until external events occur              |
-
-Perfect for: ETL/ELT pipelines • Data warehouse loading • ML model training • Report generation • Business process automation • Anything that needs reliable scheduling
-
-**Website**: https://airflow.apache.org  
-**GitHub**: https://github.com/apache/airflow (≈40k stars in 2025)
-
+Apache Airflow is the leading open-source platform to programmatically author, schedule, and monitor data pipelines and workflows using Python. Workflows are defined as code (DAGs), making them version-controlled, testable, and reusable. With a rich UI, 100+ built-in operators, dynamic task generation, and native support for cloud providers, Airflow powers ETL/ELT, ML pipelines, and batch jobs at companies like Airbnb, Netflix, and Spotify.
 
 ### Application Layout
 <img width="1918" height="968" alt="image" src="https://github.com/user-attachments/assets/ae010668-4f89-4a96-aa25-cc87c4d41311" />
