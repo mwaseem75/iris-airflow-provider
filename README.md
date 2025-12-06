@@ -10,21 +10,12 @@
 #### Production-ready integration between Apache Airflow and InterSystems IRIS Data Platform.
 <img width="1918" height="968" alt="image" src="https://github.com/user-attachments/assets/ae010668-4f89-4a96-aa25-cc87c4d41311" />
 
-
-Seamlessly orchestrate InterSystems IRIS workloads from Apache Airflow:
-- Native SQL execution with full templating support
-- Reliable bulk data loading via SQLAlchemy + pandas
-- Full connection management with Airflow Connections
-- Built for production ETL, analytics, and healthcare workflows
-
----
-
 ### Features
 
 - `IrisSQLOperator` – Execute raw SQL/ObjectScript with Jinja templating
 - `IrisHook` – SQLAlchemy-compatible hook for pandas, ORM, and custom logic
-- Full support for IRIS namespaces, schemas, and authentication
-- Works reliably with `pandas.to_sql()` (critical fix: `chunksize=1` for IRIS compatibility)
+- Connection management with Airflow Connections
+- Reliable bulk data loading via SQLAlchemy + pandas
 - Zero external dependencies beyond standard Airflow & IRIS Python drivers
 - Comprehensive examples for real-world ETL patterns
 
