@@ -1,0 +1,13 @@
+.DS_Store
+__pycache__/
+.coverage
+*.egg-info/
+build/
+dist/
+.python-version
+.venv
+.whl
+# Ignore everything in the logs folder, but keep the folder itself
+logs/*
+# Optionally, force-add a placeholder file so the folder is tracked when empty
+!logs/.gitkeep
