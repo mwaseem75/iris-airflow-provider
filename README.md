@@ -1,11 +1,12 @@
 <h1>Intersystems IRIS provider for Apache Airflow</h1>
 <img width="630" height="266" alt="image" src="https://github.com/user-attachments/assets/99d107ab-69d0-4e89-a51a-cf78867d618e" />
 
+[![one](https://img.shields.io/badge/Platform-InterSystems%20IRIS-blue)](https://www.intersystems.com/data-platform/)
+[![one](https://img.shields.io/badge/Workflow%20Orchestration-Aoache%20Airflow-maroon)](https://airflow.apache.org/)
+[![one](https://img.shields.io/badge/PyPI%20Package-airflow%20provider%20iris-orange)](https://pypi.org/project/airflow-provider-iris/)
+[![one](https://img.shields.io/badge/PyPI%20Availabe%20on-Open%20Exchange-blue)](https:///)
+[![License](https://img.shields.io/badge/License-Apache%202.0-00b2a9.svg)](https://opensource.org/licenses/Apache-2.0)
 
-[![PyPI version](https://badge.fury.io/py/airflow-provider-iris.svg)](https://badge.fury.io/py/airflow-provider-iris)
-[![PyPI - Downloads](https://img.shields.io/pypi/dm/airflow-provider-iris)](https://pypistats.org/packages/airflow-provider-iris)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Contest Entry](https://img.shields.io/badge/InterSystems-Developer%20Contest%202025-FF6A00.svg)](https://openexchange.intersystems.com/contest/current)
 #### Production-ready integration between Apache Airflow and InterSystems IRIS Data Platform.
 <img width="1918" height="968" alt="image" src="https://github.com/user-attachments/assets/ae010668-4f89-4a96-aa25-cc87c4d41311" />
 
