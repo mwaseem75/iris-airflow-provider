@@ -7,7 +7,7 @@
 [![one](https://img.shields.io/badge/PyPI%20Availabe%20on-Open%20Exchange-blue)](https:///)
 [![License](https://img.shields.io/badge/License-Apache%202.0-00b2a9.svg)](https://opensource.org/licenses/Apache-2.0)
 
-#### Production-ready integration between Apache Airflow and InterSystems IRIS Data Platform.
+### Application Layout
 <img width="1918" height="968" alt="image" src="https://github.com/user-attachments/assets/ae010668-4f89-4a96-aa25-cc87c4d41311" />
 
 ### Features
@@ -21,17 +21,61 @@
 
 ---
 
-### Installation
+## Installation 
 
-```bash
-pip install airflow-provider-iris
+### Docker (e.g. for dev purposes)
+
+Clone/git pull the repo into any local directory
+
 ```
-### Quick Start (Create IRIS connection)
+$ git clone https://github.com/mwaseem75/iris-fhir-lab.git
+```
+Open the terminal in this directory and run below commands:
 
-Configure Connection in Airflow UI
+Initializes the Airflow metadata database
+
+```
+$ docker compose up airflow-init
+```
+Initializes IRIS and entire Airflow platform
+```
+$ docker-compose up -d
+```
+
+## Run the Application
+Navigate to [http://localhost:8080/](http://localhost:8080/) to run the application
+<img width="1911" height="975" alt="image" src="https://github.com/user-attachments/assets/bedf7b9c-8dbb-4f6e-8828-c79d7f93237e" />
+
+## View/Run Sample Dags
+Application ships with three DAGS. Click on Dags.
+Click toggle to button to enable or disable Dags.
+<img width="1917" height="935" alt="image" src="https://github.com/user-attachments/assets/1561a7e0-4d48-47b7-9c58-4eaf88c24ce7" />
+Click Trigger Arrow to run the DAG manually
+<img width="1915" height="953" alt="image" src="https://github.com/user-attachments/assets/4418ffff-667a-4721-96b6-89f8b3f84736" />
+Double click on 01-IRIS-demo to view the DAG
+<img width="1913" height="966" alt="image" src="https://github.com/user-attachments/assets/3027eb74-81f3-4901-baad-328f2079a2d6" />
+This DAG has 3 tasks, 1 Create table, Insert Data and Retrieve Data
+<img width="1918" height="816" alt="image" src="https://github.com/user-attachments/assets/14bead69-2a4d-4ca8-b723-0550433f4e5b" />
+Select the Task and click on the Box to view the task details, click on code to view the code
+<img width="1913" height="961" alt="image" src="https://github.com/user-attachments/assets/176ea66e-857c-4089-b91a-f0f9442b36e4" />
+to view code
+<img width="1896" height="920" alt="image" src="https://github.com/user-attachments/assets/1125ad52-c1da-4232-af52-6a7dfd1567fb" />
+to view log
+<img width="1917" height="963" alt="image" src="https://github.com/user-attachments/assets/ecc71e50-038c-4439-b503-639ac502fdfe" />
+
+## ADD new DAG
+**DAG** (Directed Acyclic Graph) – a Python script that defines a workflow as a collection of tasks with dependencies and schedule in Apache Airflow.
+Airflow automatically take the DAGS from DAG folder. add new python file in DAG folder:
+
+Click on Create table task then click on 
+
+
+
+### Add IRIS connection 
 Go to Admin → Connections → Add Connection
+<img width="1917" height="590" alt="image" src="https://github.com/user-attachments/assets/1dd6e368-0b63-45f9-9e00-b330bbcc8f41" />
+Click on save button to add the connection
 <img width="1127" height="876" alt="image" src="https://github.com/user-attachments/assets/7ba543e6-100b-49d5-88fb-1ed412f63d00" />
-
 
 Use your InterSystems IRIS connection by setting the `iris_conn_id` parameter in any of the provided operators.
 
