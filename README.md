@@ -47,7 +47,7 @@ $ docker-compose up -d
 ```
 
 ## Run the Application
-Navigate to [http://localhost:8080/](http://localhost:8080/) to access the application.
+Navigate to [http://localhost:8080/](http://localhost:8080/) to access the application [Credentials: airflow/airflow]
 <img width="1528" alt="image" src="https://github.com/user-attachments/assets/e821d4b5-85a2-4ef6-a81f-bafa7e2aae5c" />
 
 
@@ -75,19 +75,9 @@ Then click **Log** tab to see the Log details.
 <img width="1917" alt="image" src="https://github.com/user-attachments/assets/ecc71e50-038c-4439-b503-639ac502fdfe" />
 If the DAG runs successfully, verify the results in the InterSystems Management Portal. 
 Navigate to http://localhost:32783/csp/sys/exp/%25CSP.UI.Portal.SQL.Home.zen?$NAMESPACE=USER
-[Credentials: _SYSTEM/`SYS`]
-<img width="1529" alt="image" src="https://github.com/user-attachments/assets/942fe4a1-19cc-4974-ab99-21c06d72e0c7" />
+[Credentials: _SYSTEM/SYS]
+<img width="1784" alt="image" src="https://github.com/user-attachments/assets/f73553b2-ebdb-4e9d-b3ec-3ae196bf7921" />
 
-## About Airflow-provider-iris package
-The Apache Airflow Provider for InterSystems IRIS enables Airflow users to connect to InterSystems IRIS databases and execute SQL tasks using a native Airflow connection type (iris).
-### Installation
-The **airflow-provider-iris** package can be installed separately in any Airflow environment using the following command:
-```bash
-pip install airflow-provider-iris
-```
-For more details, visit the package on PyPI: 
-[![one](https://img.shields.io/badge/PyPI%20Package-airflow%20provider%20iris-yellowgreen)](https://pypi.org/project/airflow-provider-iris/)
-<img width="1563" alt="image" src="https://github.com/user-attachments/assets/c28036a4-30b6-4031-ac47-e4f030071a48" />
 
 ### Add IRIS connection 
 Go to Admin → Connections → Add Connection
@@ -99,6 +89,7 @@ Use your InterSystems IRIS connection by setting the `iris_conn_id` parameter in
 
 In the example below, the `IrisSQLOperator` uses the `iris_conn_id` parameter to connect to the IRIS instance when the DAG is defined: 
 ```python
+#New_Test_DAG.py
 from airflow_provider_iris.operators.iris_operator import IrisSQLOperator
 
 with DAG(
@@ -120,212 +111,17 @@ with DAG(
     )
 ```
 
-
 ## ADD new DAG
 **DAG** (Directed Acyclic Graph) – a Python script that defines a workflow as a collection of tasks with dependencies and schedule in Apache Airflow.
-Airflow automatically take the DAGS from DAG folder. add new python file in DAG folder:
-
-Click on Create table task then click on 
-
-
-
-### Example DAGs (Included in examples/)
-1. Raw SQL Operator – Simple & Powerful
-```python
-# dags/01_IRIS_Raw_SQL_Demo.py
-from datetime import datetime
-from airflow import DAG
-from airflow_provider_iris.operators.iris_operator import IrisSQLOperator
-
-with DAG(
-    dag_id="01_IRIS_Raw_SQL_Demo",
-    start_date=datetime(2025, 12, 1),
-    schedule=None,
-    catchup=False,
-    tags=["iris-contest"],
-) as dag:
-    
-    create_table = IrisSQLOperator(
-        task_id="create_table",
-        sql="""CREATE TABLE IF NOT EXISTS Test.AirflowDemo (
-               ID INTEGER IDENTITY PRIMARY KEY,
-               Message VARCHAR(200),
-               RunDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )""",
-    )
-
-    insert = IrisSQLOperator(
-        task_id="insert_row",
-        sql="INSERT INTO Test.AirflowDemo (Message) VALUES ('Hello from raw SQL operator')",
-    )
-
-    select = IrisSQLOperator(
-        task_id="select_rows",
-        sql="SELECT ID, Message, RunDate FROM Test.AirflowDemo ORDER BY ID DESC",
-    )
-
-    create_table >> insert >> select
+Airflow automatically take the DAGS from DAG folder. add new python file in DAG folder. 
+ 
+## About Airflow-provider-iris package
+The Apache Airflow Provider for InterSystems IRIS enables Airflow users to connect to InterSystems IRIS databases and execute SQL tasks using a native Airflow connection type (iris).
+### Installation
+The **airflow-provider-iris** package can be installed separately in any Airflow environment using the following command:
+```bash
+pip install airflow-provider-iris
 ```
-
-2. ORM + Pandas Integration (Real-World ETL)
-Uses SQLAlchemy + pandas with the only known reliable method for bulk inserts into IRIS.
-```
-# dags/example_sqlalchemy_dag.py
-
-from datetime import datetime
-from airflow import DAG
-from airflow.operators.python import PythonOperator
-import pandas as pd
-
-# Import your hook and model
-from airflow_provider_iris.hooks.iris_hook import IrisHook
-from sqlalchemy import Column, Integer, String, DateTime, Float
-from sqlalchemy.orm import declarative_base
-
-Base = declarative_base()
-
-class SalesRecord(Base):
-    __tablename__ = "SalesRecord"
-    __table_args__ = {"schema": "Test"}
-
-    id        = Column(Integer, primary_key=True)
-    region    = Column(String(50))
-    amount    = Column(Float)
-    sale_date = Column(DateTime)
-
-def create_and_insert_orm(**context):
-    hook = IrisHook()
-    engine = hook.get_engine()
-
-    # Create table if not exists
-    Base.metadata.create_all(engine)
-
-    # THIS IS THE ONLY METHOD THAT WORKS RELIABLY WITH IRIS RIGHT NOW
-    data = [
-        {"region": "Europe",        "amount": 12500.50, "sale_date": "2025-12-01"},
-        {"region": "Asia",          "amount": 8900.00,  "sale_date": "2025-12-02"},
-        {"region": "North America", "amount": 56700.00, "sale_date": "2025-12-03"},
-        {"region": "Africa",        "amount": 34200.00, "sale_date": "2025-12-03"},
-    ]
-    df = pd.DataFrame(data)
-    df["sale_date"] = pd.to_datetime(df["sale_date"])
-
-    # pandas.to_sql with single-row inserts → IRIS accepts this perfectly
-    df.to_sql(
-        name="SalesRecord",
-        con=engine,
-        schema="Test",
-        if_exists="append",
-        index=False,
-        method="multi",           # still fast
-        chunksize=1               # ← THIS IS THE MAGIC LINE
-    )
-    print(f"Successfully inserted {len(df)} rows using pandas.to_sql() (chunksize=1)")
-
-
-def query_orm(**context):
-    hook = IrisHook()
-    engine = hook.get_engine()
-    df = pd.read_sql("SELECT * FROM Test.SalesRecord ORDER BY id", engine)
-    for _, r in df.iterrows():
-        print(f"ORM → {int(r.id):>3} | {r.region:<15} | ${r.amount:>10,.2f} | {r.sale_date.date()}")
-
-
-with DAG(
-    dag_id="02_IRIS_ORM_Demo",
-    start_date=datetime(2025, 12, 1),
-    schedule=None,
-    catchup=False,
-    tags=["iris-contest", "orm"],
-) as dag:
-
-    orm_create = PythonOperator(task_id="orm_create_and_insert", python_callable=create_and_insert_orm)
-    orm_read   = PythonOperator(task_id="orm_read",               python_callable=query_orm)
-
-    orm_create >> orm_read
-```
-3. Synthetic Data Generator → Bulk Load
-Generate realistic sales data and load efficiently.
-
-```
-from datetime import datetime, timedelta
-from airflow import DAG
-from airflow.operators.python import PythonOperator
-import pandas as pd
-import numpy as np
-from airflow_provider_iris.hooks.iris_hook import IrisHook
-from sqlalchemy import Column, Integer, String, DateTime, Float
-from sqlalchemy.orm import declarative_base
-
-Base = declarative_base()
-
-class SalesRecord(Base):
-    __tablename__ = "SalesRecord"
-    __table_args__ = {"schema": "Test"}
-
-    id        = Column(Integer, primary_key=True)
-    region    = Column(String(50))
-    amount    = Column(Float)
-    sale_date = Column(DateTime)
-
-
-# ----------- SYNTHETIC DATA GENERATION -----------
-def generate_synthetic_sales(num_rows=500):
-    """Create synthetic sales data for testing."""
-    
-    regions = [
-        "North America", "South America", "Europe",
-        "Asia-Pacific", "Middle East", "Africa"
-    ]
-
-    # Randomly pick regions
-    region_data = np.random.choice(regions, size=num_rows)
-
-    # Generate synthetic amounts between 10k and 120k
-    amounts = np.random.uniform(10000, 120000, size=num_rows).round(2)
-
-    # Generate random dates within last 30 days
-    start_date = datetime(2025, 11, 1)
-    sale_dates = [start_date + timedelta(days=int(x)) for x in np.random.randint(0, 30, size=num_rows)]
-
-    df = pd.DataFrame({
-        "region": region_data,
-        "amount": amounts,
-        "sale_date": sale_dates
-    })
-
-    return df
-
-
-# ----------- AIRFLOW TASK FUNCTION -----------
-def bulk_load_from_csv(**context):
-
-    df = generate_synthetic_sales(num_rows=200)   # Change number as needed
-
-    hook = IrisHook()
-    engine = hook.get_engine()
-
-    Base.metadata.create_all(engine)
-
-    df.to_sql("SalesRecord", con=engine, schema="Test", if_exists="append", index=False)
-    print(f"Bulk loaded {len(df)} synthetic rows via pandas.to_sql()")
-
-
-# ----------- DAG DEFINITION -----------
-with DAG(
-    dag_id="03_IRIS_Load_CSV_Synthetic_Demo",
-    start_date=datetime(2025, 12, 1),
-    schedule=None,
-    catchup=False,
-    tags=["iris-contest", "etl", "synthetic"],
-) as dag:
-
-    bulk_task = PythonOperator(
-        task_id="bulk_load_synthetic_to_iris",
-        python_callable=bulk_load_from_csv
-    )
-
-```
-
-
-    
+For detailed documentation, usage examples, and a complete list of operators/hooks, see the published provider package:
+[![one](https://img.shields.io/badge/PyPI%20Package-airflow%20provider%20iris-yellowgreen)](https://pypi.org/project/airflow-provider-iris/)
+<img width="1609" height="977" alt="image" src="https://github.com/user-attachments/assets/2ead3589-2f28-4b50-a54a-45e45cbb4e1a" />
