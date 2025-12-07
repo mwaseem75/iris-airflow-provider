@@ -6,6 +6,7 @@
 [![one](https://img.shields.io/badge/PyPI%20Package-airflow%20provider%20iris-yellowgreen)](https://pypi.org/project/airflow-provider-iris/)
 [![one](https://img.shields.io/badge/PyPI%20Availabe%20on-Open%20Exchange-blue)](https:///)
 [![License](https://img.shields.io/badge/License-Apache%202.0-00b2a9.svg)](https://opensource.org/licenses/Apache-2.0)
+
 The InterSystems IRIS Provider for Apache Airflow enables seamless integration between Airflow workflows and the InterSystems IRIS data platform. It provides native connection support and operators for executing IRIS SQL and automating IRIS-driven tasks within modern ETL/ELT pipelines.
 
 Designed for reliability and ease of use, this provider helps data engineers and developers build scalable, production-ready workflows for healthcare, interoperability, analytics, and enterprise data processing—powered by InterSystems IRIS.
@@ -14,7 +15,7 @@ Designed for reliability and ease of use, this provider helps data engineers and
 [Apache Airflow](https://airflow.apache.org/) is the leading open-source platform to programmatically author, schedule, and monitor data pipelines and workflows using Python. Workflows are defined as code (DAGs), making them version-controlled, testable, and reusable. With a rich UI, 100+ built-in operators, dynamic task generation, and native support for cloud providers, Airflow powers ETL/ELT, ML pipelines, and batch jobs at companies like Airbnb, Netflix, and Spotify.
 
 ### Application Layout
-<img width="1528" alt="image" src="https://github.com/user-attachments/assets/63726129-57fd-4c0e-84b2-ef98b151c24f" />
+<img width="1718" alt="image" src="https://github.com/user-attachments/assets/c75dfc6b-1aff-4fed-b9c5-25d9c1d33d78" />
 
 ### Provider Features
 * ✔️ `IrisHook` – for managing IRIS connections
@@ -49,7 +50,6 @@ $ docker-compose up -d
 ## Run the Application
 Navigate to [http://localhost:8080/](http://localhost:8080/) to access the application [Credentials: airflow/airflow]
 <img width="1528" alt="image" src="https://github.com/user-attachments/assets/e821d4b5-85a2-4ef6-a81f-bafa7e2aae5c" />
-
 
 ## View/Run Sample Dags
 The application comes with three pre-loaded DAGs.
