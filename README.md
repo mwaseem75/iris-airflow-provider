@@ -16,14 +16,12 @@ Designed for reliability and ease of use, this provider helps data engineers and
 ### Application Layout
 <img width="1528" height="780" alt="image" src="https://github.com/user-attachments/assets/63726129-57fd-4c0e-84b2-ef98b151c24f" />
 
-### Features
-
-- `IrisSQLOperator` – Execute raw SQL/ObjectScript with Jinja templating
-- `IrisHook` – SQLAlchemy-compatible hook for pandas, ORM, and custom logic
-- Connection management with Airflow Connections
-- Reliable bulk data loading via SQLAlchemy + pandas
-- Zero external dependencies beyond standard Airflow & IRIS Python drivers
-- Comprehensive examples for real-world ETL patterns
+### Provider Features
+* ✔️ `IrisHook` – for managing IRIS connections
+* ✔️ `IrisSQLOperator` – for running SQL queries
+* ✔️ Support for both SELECT/CTE and DML statements
+* ✔️ Native Airflow connection UI customization
+* ✔️ Examples for real-world ETL patterns
 
 ---
 
@@ -34,7 +32,7 @@ Designed for reliability and ease of use, this provider helps data engineers and
 Clone/git pull the repo into any local directory
 
 ```
-$ git clone https://github.com/mwaseem75/iris-fhir-lab.git
+$ git clone https://github.com/mwaseem75/iris-airflow-provider.git
 ```
 Open the terminal in this directory and run below commands:
 
@@ -81,6 +79,14 @@ Navigate to http://localhost:32783/csp/sys/exp/%25CSP.UI.Portal.SQL.Home.zen?$NA
 <img width="1529" height="708" alt="image" src="https://github.com/user-attachments/assets/942fe4a1-19cc-4974-ab99-21c06d72e0c7" />
 
 ## About Airflow-provider-iris package
+The Apache Airflow Provider for InterSystems IRIS enables Airflow users to connect to InterSystems IRIS databases and execute SQL tasks using a native Airflow connection type (iris).
+### Installation
+The **airflow-provider-iris** package can be installed separately in any Airflow environment using the following command:
+```bash
+pip install airflow-provider-iris
+```
+For more details, visit the package on PyPI: 
+[![one](https://img.shields.io/badge/PyPI%20Package-airflow%20provider%20iris-yellowgreen)](https://pypi.org/project/airflow-provider-iris/)
 <img width="1563" alt="image" src="https://github.com/user-attachments/assets/c28036a4-30b6-4031-ac47-e4f030071a48" />
 
 ### Add IRIS connection 
