@@ -1,5 +1,5 @@
 <h1>Intersystems IRIS provider for Apache Airflow</h1>
-<img width="630" alt="image" src="https://github.com/user-attachments/assets/99d107ab-69d0-4e89-a51a-cf78867d618e" />
+<img width="530" alt="image" src="https://github.com/user-attachments/assets/99d107ab-69d0-4e89-a51a-cf78867d618e" />
 
 [![one](https://img.shields.io/badge/Platform-InterSystems%20IRIS-blue)](https://www.intersystems.com/data-platform/)
 [![one](https://img.shields.io/badge/Workflow%20Orchestration-Aoache%20Airflow-success)](https://airflow.apache.org/)
