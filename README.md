@@ -14,7 +14,7 @@ Designed for reliability and ease of use, this provider helps data engineers and
 [Apache Airflow](https://airflow.apache.org/) is the leading open-source platform to programmatically author, schedule, and monitor data pipelines and workflows using Python. Workflows are defined as code (DAGs), making them version-controlled, testable, and reusable. With a rich UI, 100+ built-in operators, dynamic task generation, and native support for cloud providers, Airflow powers ETL/ELT, ML pipelines, and batch jobs at companies like Airbnb, Netflix, and Spotify.
 
 ### Application Layout
-<img width="1528" height="780" alt="image" src="https://github.com/user-attachments/assets/63726129-57fd-4c0e-84b2-ef98b151c24f" />
+<img width="1528" alt="image" src="https://github.com/user-attachments/assets/63726129-57fd-4c0e-84b2-ef98b151c24f" />
 
 ### Provider Features
 * ✔️ `IrisHook` – for managing IRIS connections
@@ -48,14 +48,14 @@ $ docker-compose up -d
 
 ## Run the Application
 Navigate to [http://localhost:8080/](http://localhost:8080/) to access the application.
-<img width="1528" height="780" alt="image" src="https://github.com/user-attachments/assets/e821d4b5-85a2-4ef6-a81f-bafa7e2aae5c" />
+<img width="1528" alt="image" src="https://github.com/user-attachments/assets/e821d4b5-85a2-4ef6-a81f-bafa7e2aae5c" />
 
 
 ## View/Run Sample Dags
 The application comes with three pre-loaded DAGs.
 1. Open the Airflow UI and click on the **DAGs** tab.  
 2. Use the toggle button next to each DAG to enable or disable it.
-<img width="1533" height="748" alt="image" src="https://github.com/user-attachments/assets/20773c69-9eca-40a8-b663-274598f6a545" />
+<img width="1533"  alt="image" src="https://github.com/user-attachments/assets/20773c69-9eca-40a8-b663-274598f6a545" />
 
 To run a DAG manually, click the **Trigger DAG** button (▶ arrow) on the right side of the DAG row.
 Click the name of DAG (e.g., **01_IRIS_Raw_SQL_Demo**) to view its details, graph, and run history.
@@ -76,7 +76,7 @@ Then click **Log** tab to see the Log details.
 If the DAG runs successfully, verify the results in the InterSystems Management Portal. 
 Navigate to http://localhost:32783/csp/sys/exp/%25CSP.UI.Portal.SQL.Home.zen?$NAMESPACE=USER
 [Credentials: _SYSTEM/`SYS`]
-<img width="1529" height="708" alt="image" src="https://github.com/user-attachments/assets/942fe4a1-19cc-4974-ab99-21c06d72e0c7" />
+<img width="1529" alt="image" src="https://github.com/user-attachments/assets/942fe4a1-19cc-4974-ab99-21c06d72e0c7" />
 
 ## About Airflow-provider-iris package
 The Apache Airflow Provider for InterSystems IRIS enables Airflow users to connect to InterSystems IRIS databases and execute SQL tasks using a native Airflow connection type (iris).
