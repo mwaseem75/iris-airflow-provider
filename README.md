@@ -67,14 +67,18 @@ The **01_IRIS_Raw_SQL_Demo** DAG consists of three tasks:
 2. Insert Data
 3. Retrieve Data
 <img width="1918" alt="image" src="https://github.com/user-attachments/assets/14bead69-2a4d-4ca8-b723-0550433f4e5b" />
-Select a task (e.g., **create_table**) and click the task box to open its details.  
-Then click **Code** tab to see the task’s source code.
-<img width="1913" alt="image" src="https://github.com/user-attachments/assets/176ea66e-857c-4089-b91a-f0f9442b36e4" />
-to view code
-<img width="1896" alt="image" src="https://github.com/user-attachments/assets/1125ad52-c1da-4232-af52-6a7dfd1567fb" />
-to view log
-<img width="1917" alt="image" src="https://github.com/user-attachments/assets/ecc71e50-038c-4439-b503-639ac502fdfe" />
+Select a task and click the task box to open its details.
+Click **Details** tab to see its details.
 
+<img width="1913" alt="image" src="https://github.com/user-attachments/assets/176ea66e-857c-4089-b91a-f0f9442b36e4" />
+Click **Code** tab to see the task’s source code.
+<img width="1896" alt="image" src="https://github.com/user-attachments/assets/1125ad52-c1da-4232-af52-6a7dfd1567fb" />
+Then click **Log** tab to see the Log details.
+<img width="1917" alt="image" src="https://github.com/user-attachments/assets/ecc71e50-038c-4439-b503-639ac502fdfe" />
+If the DAG runs successfully, verify the results in the InterSystems Management Portal. 
+Navigate to http://localhost:32783/csp/sys/exp/%25CSP.UI.Portal.SQL.Home.zen?$NAMESPACE=USER
+[Credentials: _SYSTEM/`SYS`]
+<img width="1529" height="708" alt="image" src="https://github.com/user-attachments/assets/942fe4a1-19cc-4974-ab99-21c06d72e0c7" />
 
 ## About Airflow-provider-iris package
 <img width="1563" alt="image" src="https://github.com/user-attachments/assets/c28036a4-30b6-4031-ac47-e4f030071a48" />
