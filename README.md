@@ -11,12 +11,10 @@ The InterSystems IRIS Provider for Apache Airflow enables seamless integration b
 Designed for reliability and ease of use, this provider helps data engineers and developers build scalable, production-ready workflows for healthcare, interoperability, analytics, and enterprise data processing—powered by InterSystems IRIS.
 
 ## About Apache Airflow
-
-
-Apache Airflow is the leading open-source platform to programmatically author, schedule, and monitor data pipelines and workflows using Python. Workflows are defined as code (DAGs), making them version-controlled, testable, and reusable. With a rich UI, 100+ built-in operators, dynamic task generation, and native support for cloud providers, Airflow powers ETL/ELT, ML pipelines, and batch jobs at companies like Airbnb, Netflix, and Spotify.
+[Apache Airflow](https://airflow.apache.org/) is the leading open-source platform to programmatically author, schedule, and monitor data pipelines and workflows using Python. Workflows are defined as code (DAGs), making them version-controlled, testable, and reusable. With a rich UI, 100+ built-in operators, dynamic task generation, and native support for cloud providers, Airflow powers ETL/ELT, ML pipelines, and batch jobs at companies like Airbnb, Netflix, and Spotify.
 
 ### Application Layout
-<img width="1918" alt="image" src="https://github.com/user-attachments/assets/ae010668-4f89-4a96-aa25-cc87c4d41311" />
+<img width="1528" height="780" alt="image" src="https://github.com/user-attachments/assets/63726129-57fd-4c0e-84b2-ef98b151c24f" />
 
 ### Features
 
@@ -51,20 +49,26 @@ $ docker-compose up -d
 ```
 
 ## Run the Application
-Navigate to [http://localhost:8080/](http://localhost:8080/) to run the application
-<img width="1911" alt="image" src="https://github.com/user-attachments/assets/bedf7b9c-8dbb-4f6e-8828-c79d7f93237e" />
+Navigate to [http://localhost:8080/](http://localhost:8080/) to access the application.
+<img width="1528" height="780" alt="image" src="https://github.com/user-attachments/assets/e821d4b5-85a2-4ef6-a81f-bafa7e2aae5c" />
+
 
 ## View/Run Sample Dags
-Application ships with three DAGS. Click on Dags.
-Click toggle to button to enable or disable Dags.
-<img width="1917" alt="image" src="https://github.com/user-attachments/assets/1561a7e0-4d48-47b7-9c58-4eaf88c24ce7" />
-Click Trigger Arrow to run the DAG manually
+The application comes with three pre-loaded DAGs.
+1. Open the Airflow UI and click on the **DAGs** tab.  
+2. Use the toggle button next to each DAG to enable or disable it.
+<img width="1533" height="748" alt="image" src="https://github.com/user-attachments/assets/20773c69-9eca-40a8-b663-274598f6a545" />
+
+To run a DAG manually, click the **Trigger DAG** button (▶ arrow) on the right side of the DAG row.
+Click the name of DAG (e.g., **01_IRIS_Raw_SQL_Demo**) to view its details, graph, and run history.
 <img width="1915"  alt="image" src="https://github.com/user-attachments/assets/4418ffff-667a-4721-96b6-89f8b3f84736" />
-Double click on 01-IRIS-demo to view the DAG
-<img width="1913" alt="image" src="https://github.com/user-attachments/assets/3027eb74-81f3-4901-baad-328f2079a2d6" />
-This DAG has 3 tasks, 1 Create table, Insert Data and Retrieve Data
+The **01_IRIS_Raw_SQL_Demo** DAG consists of three tasks:
+1. Create Table
+2. Insert Data
+3. Retrieve Data
 <img width="1918" alt="image" src="https://github.com/user-attachments/assets/14bead69-2a4d-4ca8-b723-0550433f4e5b" />
-Select the Task and click on the Box to view the task details, click on code to view the code
+Select a task (e.g., **create_table**) and click the task box to open its details.  
+Then click **Code** tab to see the task’s source code.
 <img width="1913" alt="image" src="https://github.com/user-attachments/assets/176ea66e-857c-4089-b91a-f0f9442b36e4" />
 to view code
 <img width="1896" alt="image" src="https://github.com/user-attachments/assets/1125ad52-c1da-4232-af52-6a7dfd1567fb" />
