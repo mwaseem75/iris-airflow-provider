@@ -7,20 +7,14 @@
 [![one](https://img.shields.io/badge/PyPI%20Availabe%20on-Open%20Exchange-blue)](https:///)
 [![License](https://img.shields.io/badge/License-Apache%202.0-00b2a9.svg)](https://opensource.org/licenses/Apache-2.0)
 
-The InterSystems IRIS Provider for Apache Airflow enables seamless integration between Airflow workflows and the InterSystems IRIS data platform. It provides native connection support and operators for executing IRIS SQL and automating IRIS-driven tasks within modern ETL/ELT pipelines. Designed for reliability and ease of use, this provider helps data engineers and developers build scalable, production-ready workflows.
+ 
+The **iris-airflow-provider** application leverages the [airflow-provider-iris](https://pypi.org/project/airflow-provider-iris/) python package to enable seamless integration between Apache Airflow workflows and the InterSystems IRIS data platform. It provides native connection support and operators for executing IRIS SQL and automating IRIS-driven tasks within modern ETL/ELT pipelines. Designed for reliability and ease of use, this provider helps data engineers and developers build scalable, production-ready workflows.
 
 ## About Apache Airflow
 [Apache Airflow](https://airflow.apache.org/) is the leading open-source platform to programmatically author, schedule, and monitor data pipelines and workflows using Python. Workflows are defined as code (DAGs), making them version-controlled, testable, and reusable. With a rich UI, 100+ built-in operators, dynamic task generation, and native support for cloud providers, Airflow powers ETL/ELT, ML pipelines, and batch jobs at companies like Airbnb, Netflix, and Spotify.
 
 ### Application Layout
 <img width="1718" alt="image" src="https://github.com/user-attachments/assets/c75dfc6b-1aff-4fed-b9c5-25d9c1d33d78" />
-
-### Provider Features
-* ✔️ `IrisHook` – for managing IRIS connections
-* ✔️ `IrisSQLOperator` – for running SQL queries
-* ✔️ Support for both SELECT/CTE and DML statements
-* ✔️ Native Airflow connection UI customization
-* ✔️ Examples for real-world ETL patterns
 
 ---
 
@@ -123,6 +117,14 @@ with DAG(
  
 ## About Airflow-provider-iris package
 The Apache Airflow Provider for InterSystems IRIS enables Airflow users to connect to InterSystems IRIS databases and execute SQL tasks using a native Airflow connection type (iris).
+
+### Provider Features
+* ✔️ `IrisHook` – for managing IRIS connections
+* ✔️ `IrisSQLOperator` – for running SQL queries
+* ✔️ Support for both SELECT/CTE and DML statements
+* ✔️ Native Airflow connection UI customization
+* ✔️ Examples for real-world ETL patterns
+
 ### Installation
 The **airflow-provider-iris** package can be installed separately in any Airflow environment using the following command:
 ```bash
