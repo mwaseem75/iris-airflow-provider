@@ -87,7 +87,7 @@ Click on save button to add the connection
 
 Use your InterSystems IRIS connection by setting the `iris_conn_id` parameter in any of the provided operators.
 
-In the example below, the `IrisSQLOperator` uses the `iris_conn_id` parameter to connect to the IRIS instance when the DAG is defined: 
+In the example below, the `IrisSQLOperator` uses the `iris_conn_id` parameter to connect to the IRIS instance: 
 ```python
 #New_Test_DAG.py
 
@@ -120,9 +120,8 @@ with DAG(
 
 ```
 
-## ADD new DAG
-**DAG** (Directed Acyclic Graph) – a Python script that defines a workflow as a collection of tasks with dependencies and schedule in Apache Airflow.
-Airflow automatically take the DAGS from DAG folder. add new python file in DAG folder. 
+## Adding a new DAG
+**DAG** (Directed Acyclic Graph) is a Python script that defines an Airflow workflow as a collection of tasks, their dependencies, and execution schedule. Airflow automatically discovers and loads any Python file placed in the designated DAGs folder.
  
 ## About Airflow-provider-iris package
 The Apache Airflow Provider for InterSystems IRIS enables Airflow users to connect to InterSystems IRIS databases and execute SQL tasks using a native Airflow connection type (iris).
