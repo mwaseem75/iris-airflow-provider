@@ -7,9 +7,7 @@
 [![one](https://img.shields.io/badge/PyPI%20Availabe%20on-Open%20Exchange-blue)](https:///)
 [![License](https://img.shields.io/badge/License-Apache%202.0-00b2a9.svg)](https://opensource.org/licenses/Apache-2.0)
 
-The InterSystems IRIS Provider for Apache Airflow enables seamless integration between Airflow workflows and the InterSystems IRIS data platform. It provides native connection support and operators for executing IRIS SQL and automating IRIS-driven tasks within modern ETL/ELT pipelines.
-
-Designed for reliability and ease of use, this provider helps data engineers and developers build scalable, production-ready workflows for healthcare, interoperability, analytics, and enterprise data processing—powered by InterSystems IRIS.
+The InterSystems IRIS Provider for Apache Airflow enables seamless integration between Airflow workflows and the InterSystems IRIS data platform. It provides native connection support and operators for executing IRIS SQL and automating IRIS-driven tasks within modern ETL/ELT pipelines. Designed for reliability and ease of use, this provider helps data engineers and developers build scalable, production-ready workflows.
 
 ## About Apache Airflow
 [Apache Airflow](https://airflow.apache.org/) is the leading open-source platform to programmatically author, schedule, and monitor data pipelines and workflows using Python. Workflows are defined as code (DAGs), making them version-controlled, testable, and reusable. With a rich UI, 100+ built-in operators, dynamic task generation, and native support for cloud providers, Airflow powers ETL/ELT, ML pipelines, and batch jobs at companies like Airbnb, Netflix, and Spotify.
@@ -71,7 +69,7 @@ Click **Details** tab to see its details.
 <img width="1913" alt="image" src="https://github.com/user-attachments/assets/176ea66e-857c-4089-b91a-f0f9442b36e4" />
 Click **Code** tab to see the task’s source code.
 <img width="1896" alt="image" src="https://github.com/user-attachments/assets/1125ad52-c1da-4232-af52-6a7dfd1567fb" />
-Then click **Log** tab to see the Log details.
+Click **Log** tab to see the Log details.
 <img width="1917" alt="image" src="https://github.com/user-attachments/assets/ecc71e50-038c-4439-b503-639ac502fdfe" />
 If the DAG runs successfully, verify the results in the InterSystems Management Portal. 
 Navigate to http://localhost:32783/csp/sys/exp/%25CSP.UI.Portal.SQL.Home.zen?$NAMESPACE=USER
