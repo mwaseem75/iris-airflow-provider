@@ -90,25 +90,34 @@ Use your InterSystems IRIS connection by setting the `iris_conn_id` parameter in
 In the example below, the `IrisSQLOperator` uses the `iris_conn_id` parameter to connect to the IRIS instance when the DAG is defined: 
 ```python
 #New_Test_DAG.py
+
+from datetime import datetime
+from airflow import DAG
 from airflow_provider_iris.operators.iris_operator import IrisSQLOperator
 
+# Define the DAG for running a simple SQL command against InterSystems IRIS.
 with DAG(
     dag_id="01_IRIS_Raw_SQL_Demo_Local",
     start_date=datetime(2025, 12, 1),
-    schedule=None,
-    catchup=False,
-    tags=["iris-contest"],
+    schedule=None,               # Run manually; no automatic scheduling
+    catchup=False,               # Do not backfill previous dates
+    tags=["iris-contest"],       # Tag to group the DAG in Airflow UI
 ) as dag:
-    
+
+    # Create a demo table if it does not already exist.
+    # This operator connects to the specified IRIS instance and executes the SQL.
     create_table = IrisSQLOperator(
         task_id="create_table",
-        iris_conn_id="ContainerInstance",
-        sql="""CREATE TABLE IF NOT EXISTS Test.AirflowDemo (
-               ID INTEGER IDENTITY PRIMARY KEY,
-               Message VARCHAR(200),
-               RunDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )""",
+        iris_conn_id="ContainerInstance",   # Airflow connection configured for IRIS
+        sql="""
+            CREATE TABLE IF NOT EXISTS Test.AirflowDemo (
+                ID INTEGER IDENTITY PRIMARY KEY,
+                Message VARCHAR(200),
+                RunDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        """,
     )
+
 ```
 
 ## ADD new DAG
