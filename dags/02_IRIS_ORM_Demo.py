@@ -1,4 +1,4 @@
-# dags/example_sqlalchemy_dag.py
+# dags/02_IRIS_ORM_Demo.py
 
 from datetime import datetime
 from airflow import DAG
@@ -32,6 +32,8 @@ class SalesRecord(Base):
 # Uses pandas.to_sql() with chunksize=1 → most consistent for IRIS.
 # ---------------------------------------------------------------------
 def create_and_insert_orm(**context):
+    # If you use a non-default connection → ALWAYS pass iris_conn_id explicitly
+    # e.g hook = IrisHook(iris_conn_id="iris_Connection_ID")
     hook = IrisHook()
     engine = hook.get_engine()
 

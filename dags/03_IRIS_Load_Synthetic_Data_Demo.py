@@ -69,6 +69,8 @@ def bulk_load_synthetic_sales(**context):
     df = generate_synthetic_sales(num_rows=200)
 
     # Create SQLAlchemy engine via IRIS hook
+    # If you use a non-default connection → ALWAYS pass iris_conn_id explicitly
+    # e.g hook = IrisHook(iris_conn_id="iris_Connection_ID")
     hook = IrisHook()
     engine = hook.get_engine()
 
