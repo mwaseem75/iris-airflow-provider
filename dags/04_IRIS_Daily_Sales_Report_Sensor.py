@@ -12,7 +12,7 @@ from airflow import DAG
 
 # Provider classes – install with: pip install airflow-provider-iris
 from airflow_provider_iris.sensors.iris_sensor import IrisSensor
-from airflow_provider_iris.operators.iris_sql_operator import IrisSQLOperator
+from airflow_provider_iris.operators.iris_operator import IrisSQLOperator
 
 
 with DAG(
