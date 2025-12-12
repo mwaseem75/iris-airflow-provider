@@ -130,6 +130,8 @@ The **airflow-provider-iris** package can be installed separately in any Airflow
 ```bash
 pip install airflow-provider-iris
 ```
+This package is built on top of [sqlalchemy-iris](https://pypi.org/project/sqlalchemy-iris/)
+
 For detailed documentation, usage examples, and a complete list of operators/hooks, see the published provider package:
 [![one](https://img.shields.io/badge/PyPI%20Package-airflow%20provider%20iris-yellowgreen)](https://pypi.org/project/airflow-provider-iris/)
 <img width="1609" alt="image" src="https://github.com/user-attachments/assets/2ead3589-2f28-4b50-a54a-45e45cbb4e1a" />
