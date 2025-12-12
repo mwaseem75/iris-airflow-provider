@@ -8,8 +8,16 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-00b2a9.svg)](https://opensource.org/licenses/Apache-2.0)
 
  
-The **iris-airflow-provider** application leverages the [airflow-provider-iris](https://pypi.org/project/airflow-provider-iris/) python package to enable seamless integration between Apache Airflow workflows and the InterSystems IRIS data platform. It provides native connection support and operators for executing IRIS SQL and automating IRIS-driven tasks within modern ETL/ELT pipelines. Designed for reliability and ease of use, this provider helps data engineers and developers build scalable, production-ready workflows.
+The **iris-airflow-provider** application leverages the [airflow-provider-iris](https://pypi.org/project/airflow-provider-iris/) python package to enable seamless integration between Apache Airflow workflows and the InterSystems IRIS data platform. It provides native connection support and operators for executing IRIS SQL and automating IRIS-driven tasks within modern ETL/ELT pipelines. Designed for reliability and ease of use, this provider helps data engineers and developers build scalable, production-ready workflows and the newly added IrisSensor that lets you pause workflows until IRIS data is ready, all while keeping everything simple, reliable, and production-grade.
 
+### Provider Features
+* ✔️ `IrisHook` – for managing IRIS connections
+* ✔️ `IrisSQLOperator` – Execute SQL statements
+* ✔️ `IrisSensor` - Wait for IRIS data readiness (row counts, status flags, bulk load completion)
+* ✔️ Support for both SELECT/CTE and DML statements
+* ✔️ Native Airflow connection UI customization
+* ✔️ Examples for real-world ETL patterns
+  
 ## About Apache Airflow
 [Apache Airflow](https://airflow.apache.org/) is the leading open-source platform to programmatically author, schedule, and monitor data pipelines and workflows using Python. Workflows are defined as code (DAGs), making them version-controlled, testable, and reusable. With a rich UI, 100+ built-in operators, dynamic task generation, and native support for cloud providers, Airflow powers ETL/ELT, ML pipelines, and batch jobs at companies like Airbnb, Netflix, and Spotify.
 
@@ -47,7 +55,7 @@ Navigate to [http://localhost:8080/](http://localhost:8080/) to access the appli
 The application comes with three pre-loaded DAGs.
 1. Open the Airflow UI and click on the **DAGs** tab.  
 2. Use the toggle button next to each DAG to enable or disable it.
-<img width="1533"  alt="image" src="https://github.com/user-attachments/assets/20773c69-9eca-40a8-b663-274598f6a545" />
+<img width="1916"  alt="image" src="https://github.com/user-attachments/assets/2d80cb19-edf4-4544-94bf-f82baa828c6f" />
 
 To run a DAG manually, click the **Trigger DAG** button (▶ arrow) on the right side of the DAG row.
 Click the name of DAG (e.g., **01_IRIS_Raw_SQL_Demo**) to view its details, graph, and run history.
@@ -70,8 +78,27 @@ Navigate to http://localhost:32783/csp/sys/exp/%25CSP.UI.Portal.SQL.Home.zen?$NA
 [Credentials: _SYSTEM/SYS]
 <img width="1784" alt="image" src="https://github.com/user-attachments/assets/f73553b2-ebdb-4e9d-b3ec-3ae196bf7921" />
 
+## IrisSensor
+## IrisSensor – Wait for Data in InterSystems IRIS
 
-### Add IRIS connection 
+The `IrisSensor` is a purpose-built Airflow sensor that repeatedly runs a SQL query against IRIS until a condition is satisfied.  
+It solves the most common real-world need when integrating Airflow with IRIS:  
+**“Don’t start my downstream jobs until the data has actually landed in IRIS.”**
+
+### Why you’ll use it every day
+- Wait for daily bulk loads (CSV, EDI, API, replication, etc.)
+- Wait for upstream systems to flip a status flag
+- Wait for a minimum number of rows in a staging table
+- Wait for a specific value (e.g., `Status = 'COMPLETED'`)
+- Wait for stored procedures or class methods that write results to a table
+
+### irisSensor Example (04_IRIS_Daily_Sales_Report_Sensor.py)
+This example DAG waits patiently until the daily bulk sales load is complete, safely creates the summary table if it doesn’t exist, replaces today’s report (making the pipeline fully idempotent), and builds a clean regional summary ready for dashboards or downstream jobs.
+<img width="1917" alt="image" src="https://github.com/user-attachments/assets/098f7b55-e63c-4008-83d2-1b7ef805e189" />
+
+--
+
+## Add IRIS connection 
 Go to Admin → Connections → Add Connection
 <img width="1917" alt="image" src="https://github.com/user-attachments/assets/1dd6e368-0b63-45f9-9e00-b330bbcc8f41" />
 Click on save button to add the connection
@@ -117,13 +144,6 @@ with DAG(
  
 ## About Airflow-provider-iris package
 The Apache Airflow Provider for InterSystems IRIS enables Airflow users to connect to InterSystems IRIS databases and execute SQL tasks using a native Airflow connection type (iris).
-
-### Provider Features
-* ✔️ `IrisHook` – for managing IRIS connections
-* ✔️ `IrisSQLOperator` – for running SQL queries
-* ✔️ Support for both SELECT/CTE and DML statements
-* ✔️ Native Airflow connection UI customization
-* ✔️ Examples for real-world ETL patterns
 
 ### Installation
 The **airflow-provider-iris** package can be installed separately in any Airflow environment using the following command:
