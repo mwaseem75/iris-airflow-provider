@@ -23,42 +23,32 @@ class SalesRecord(Base):
     region    = Column(String(50))
     amount    = Column(Float)
     sale_date = Column(DateTime)
+    entry_date = Column(DateTime, default=datetime.now)
 
 
 # ---------------------------------------------------------------------
 # Generate synthetic sales data for testing or demo purposes.
 # Supports dynamic number of rows and produces realistic random data.
 # ---------------------------------------------------------------------
-def generate_synthetic_sales(num_rows=500):
-    """Create synthetic sales data as a pandas DataFrame."""
-    
-    regions = [
-        "North America", "South America", "Europe",
-        "Asia-Pacific", "Middle East", "Africa"
-    ]
+def generate_synthetic_sales(num_rows=200):
+    regions = ["North America", "South America", "Europe", "Asia-Pacific", "Middle East", "Africa"]
 
-    # Randomly pick a region for each row
     region_data = np.random.choice(regions, size=num_rows)
-
-    # Random sales amounts between 10k and 120k
     amounts = np.random.uniform(10000, 120000, size=num_rows).round(2)
 
-    # Random sale dates within last 30 days
-    start_date = datetime(2025, 11, 1)
-    sale_dates = [
-        start_date + timedelta(days=int(x)) 
-        for x in np.random.randint(0, 30, size=num_rows)
-    ]
+    # Random business dates in last 60 days
+    start_date = datetime.now() - timedelta(days=60)
+    sale_dates = [start_date + timedelta(days=np.random.randint(0, 61)) for _ in range(num_rows)]
 
-    # Construct a DataFrame
     df = pd.DataFrame({
         "region": region_data,
         "amount": amounts,
-        "sale_date": sale_dates
+        "sale_date": sale_dates,
+        "entry_date": pd.Timestamp.utcnow()   # ← Perfect: one value, auto-broadcast, UTC
     })
 
     return df
-
+    
 
 # ---------------------------------------------------------------------
 # Airflow task: bulk load synthetic sales data into IRIS.
