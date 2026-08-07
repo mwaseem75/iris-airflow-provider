@@ -32,8 +32,6 @@ class SalesRecord(Base):
 # Uses pandas.to_sql() with chunksize=1 → most consistent for IRIS.
 # ---------------------------------------------------------------------
 def create_and_insert_orm(**context):
-    # If you use a non-default connection → ALWAYS pass iris_conn_id explicitly
-    # e.g hook = IrisHook(iris_conn_id="iris_Connection_ID")
     hook = IrisHook()
     engine = hook.get_engine()
 
@@ -80,6 +78,9 @@ def query_orm(**context):
         "SELECT * FROM AirflowDemo.ORMSales ORDER BY id",
         engine
     )
+
+    # IRIS returns DateTime columns as strings — convert to datetime
+    df['sale_date'] = pd.to_datetime(df['sale_date'])
 
     for _, r in df.iterrows():
         print(

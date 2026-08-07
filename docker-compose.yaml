@@ -37,7 +37,9 @@ x-airflow-common:
 
 services:
   iris:
-    image: intersystemsdc/iris-community:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.iris
     container_name: iris-community
     hostname: iris
     ports:
@@ -45,12 +47,10 @@ services:
       - 32783:52773
       - 32784:53773
     environment:
-      - IRIS_PASSWORD=SYS               # change this if you want
-      - IRIS_USERNAME=_SYSTEM
       - IRIS_NAMESPACE=USER
     volumes:
       - iris-data:/iris/data             # persistent durable %SYS and databases
-      - ./iris-init:/iris/init           # put custom .cpf, scripts, etc. here if needed
+      - ./iris-init/unpw.sh:/docker-entrypoint-initdb.d/unpw.sh
     command: --check-caps false          # avoids occasional capability warnings
     restart: always
 

@@ -1,0 +1,5 @@
+FROM intersystemsdc/iris-community:latest
+COPY iris-init/fix_password.isc /tmp/fix_password.isc
+RUN iris start IRIS && \
+    iris session IRIS -U%SYS < /tmp/fix_password.isc && \
+    iris stop IRIS quietly
