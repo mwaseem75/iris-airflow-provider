@@ -13,7 +13,6 @@ The **iris-airflow-provider** application leverages the [airflow-provider-iris](
 ### Provider Features
 * ✔️ `IrisHook` – for managing IRIS connections
 * ✔️ `IrisSQLOperator` – Execute SQL statements
-* ✔️ `IrisSensor` - Wait for IRIS data readiness (row counts, status flags, bulk load completion)
 * ✔️ Support for both SELECT/CTE and DML statements
 * ✔️ Native Airflow connection UI customization
 * ✔️ Examples for real-world ETL patterns
@@ -47,6 +46,8 @@ Initializes IRIS and entire Airflow platform
 $ docker-compose up -d
 ```
 
+###### Note: This project requires at least 4 GB of RAM to run properly.
+
 ## Run the Application
 Navigate to [http://localhost:8080/](http://localhost:8080/) to access the application [Credentials: airflow/airflow]
 <img width="1528" alt="image" src="https://github.com/user-attachments/assets/e821d4b5-85a2-4ef6-a81f-bafa7e2aae5c" />
@@ -78,25 +79,6 @@ Navigate to http://localhost:32783/csp/sys/exp/%25CSP.UI.Portal.SQL.Home.zen?$NA
 [Credentials: _SYSTEM/SYS]
 <img width="1784" alt="image" src="https://github.com/user-attachments/assets/f73553b2-ebdb-4e9d-b3ec-3ae196bf7921" />
 
-## IrisSensor
-## IrisSensor – Wait for Data in InterSystems IRIS
-
-The `IrisSensor` is a purpose-built Airflow sensor that repeatedly runs a SQL query against IRIS until a condition is satisfied.  
-It solves the most common real-world need when integrating Airflow with IRIS:  
-**“Don’t start my downstream jobs until the data has actually landed in IRIS.”**
-
-### Why you’ll use it every day
-- Wait for daily bulk loads (CSV, EDI, API, replication, etc.)
-- Wait for upstream systems to flip a status flag
-- Wait for a minimum number of rows in a staging table
-- Wait for a specific value (e.g., `Status = 'COMPLETED'`)
-- Wait for stored procedures or class methods that write results to a table
-
-### irisSensor Example (04_IRIS_Daily_Sales_Report_Sensor.py)
-This example DAG waits patiently until the daily bulk sales load is complete, safely creates the summary table if it doesn’t exist, replaces today’s report (making the pipeline fully idempotent), and builds a clean regional summary ready for dashboards or downstream jobs.
-<img width="1917" alt="image" src="https://github.com/user-attachments/assets/098f7b55-e63c-4008-83d2-1b7ef805e189" />
-
---
 
 ## Add IRIS connection 
 Go to Admin → Connections → Add Connection
